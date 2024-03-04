@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Options Mapping</title>
+</head>
+<body>
+<div id="quiz"></div>
+
+<script>
+// Sample JSON response
+var jsonData = `{
+   "response_code":0,
+   "results":[
+      {
+         "type":"multiple",
+         "difficulty":"hard",
+         "category":"Entertainment: Board Games",
+         "question":"What do you declare in Rīchi Mahjong when you've drawn your winning tile?",
+         "correct_answer":"Tsumo",
+         "incorrect_answers":[
+            "Ron",
+            "Rīchi",
+            "Kan"
+         ]
+      },
+      {
+         "type":"boolean",
+         "difficulty":"easy",
+         "category":"Science &amp; Nature",
+         "question":"Igneous rocks are formed by excessive heat and pressure.",
+         "correct_answer":"False",
+         "incorrect_answers":[
+            "True"
+         ]
+      }
+   ]
+}`;
+
+// Parse JSON
+var data = JSON.parse(jsonData);
+
+// Function to map options
+function mapOptions(question) {
+    var options = question.incorrect_answers.concat(question.correct_answer);
+    // Shuffle options if needed
+    // options.sort(() => Math.random() - 0.5);
+    return options;
+}
+
+// Render questions with options
+var quizDiv = document.getElementById("quiz");
+
+data.results.forEach(function(question, index) {
+    var options = mapOptions(question);
+    
+    var questionDiv = document.createElement("div");
+    questionDiv.innerHTML = "<p>Question: " + question.question + "</p>";
+    
+    var optionsList = document.createElement("ul");
+    options.forEach(function(option) {
+        var optionItem = document.createElement("li");
+        optionItem.textContent = option;
+        optionsList.appendChild(optionItem);
+    });
+
+    questionDiv.appendChild(optionsList);
+    quizDiv.appendChild(questionDiv);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+color 1 - #0F1020 (Rich BLack)
+color 2 - #2F195F (Russian Violet)
+color 3 - #7353BA (Royal Purple)
+color 4 - #FAA6FF (Mauve)
+color 4 - #EFC3F5 (Pink Lavender)
+

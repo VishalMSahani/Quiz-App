@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0F1020] flex flex-col items-center justify-center min-h-screen">
+    <!-- 1st Page -->
+        <div id="firstPage" class="bg-[#EFC3F5]  text-[#2F195F] p-8 space-y-4 shadow rounded-xl max-w-md md:max-w-lg mt-12">
+            <img src="./Assets/logo.svg" alt="BigDevSoon Logo" class="w-150 mx-auto">
+            <div>
+            <h1 class="font-bold text-3xl flex justify-center text-center mb-3">Test Your Knowledge!</h1>
+            <p class="text-sm font-mullish flex justify-center text-center">Challange yourself with randomly generated quizzes</p>
+            </div>
+            <div class="flex  justify-center items-center ">
+            <button id="startButton" class="mt-3 mb-6 text-center border- px-10 py-[5px] rounded-lg bg-[#7353BA]
+            font-sans text- text-white hover:bg-[#2F195F] transition-all duration-200">Let's Get Started</button>
+            </div>  
+        </div>
+    <!--Quiz Page-->
+    <div id="quizpage" class="bg-[#EFC3F5]  text-[#2F195F] p-8 space-y-4 shadow rounded-xl max-w-md md:max-w-lg mt-12 mb-12">
+        <div id="Quection">
+        <p class="capitalize text-xs font-normal" >Question 1 of 10</p>
+        <p id="quizQuestion" class="font-semibold space-y-0 text-lg">Which team won the IPL 2023 ?</p>
+        </div>
+        <div id="Options" class="grid grid-flow-row gap-3  ">
+            
+        <button id="Quizbutton">
+           <span id="quizOptions"> </span>
+        </button>
+        <button id="Quizbutton">
+            <span id="quizOptions">  </span>
+        </button>
+        <button id="Quizbutton">
+            <span id="quizOptions"> </span>
+        </button>
+        <button id="Quizbutton">
+            <span id="quizOptions"> </span>
+        </button>
+        </div>
+        <div class="flex items-center justify-center gap-8">
+            <button class="mt-3 mb-6 text-center text-[#2F195F] px-10 py-[5px] rounded-lg 
+            font-sans border border-[#2f195f65] hover:font-semibold transition-all duration-200">Back</button>
+        <div class="flex items-center justify-center">
+            <button class="mt-3 mb-6 text-center border-none px-10 py-[6px] rounded-lg bg-[#7353BA]
+            font-sans border-[#2F195F] text-white hover:bg-[#2F195F] transition-all duration-200">Next</button>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
