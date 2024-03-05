@@ -2,7 +2,9 @@ const quizStartButton = document.querySelector("#startButton");
 const firstPage = document.querySelector("#firstPage");
 const quizPage = document.querySelector("#quizpage");
 const qQuestion = document.querySelector("#quizQuestion");
-const qOptions = document.querySelectorAll("#quizOptions");
+
+
+
 
 let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 10;
 
@@ -21,22 +23,40 @@ async function  getData() {
     const response = await fetch("https://opentdb.com/api.php?amount=10&category=22&difficulty=easy&type=multiple");
     let data = await response.json();
     console.log(data);
-    showDetails(data.results[0]);
+    (data.results[0]);
 
 }
 
-function showDetails(data){
-    correctAnswer = data.correct_answer;  
-    let incorrectAnswer = data.incorrect_answers;
-    let optionsList = incorrectAnswer;
-    optionsList.splice(Math.floor(Math.random() * (incorrectAnswer.length + 1)), 0, correctAnswer);
-   
+// Function to shuffle an array using Fisher-Yates algorithm
+// function shuffleArray(array) {
+//     for (var i = array.length - 1; i > 0; i--) {
+//         var j = Math.floor(Math.random() * (i + 1));
+//         var temp = array[i];
+//         array[i] = array[j];
+//         array[j] = temp;
+//     }
+//     return array;
+// }
 
+// function showDetails(data){
+//     // const quizDiv = document.getElementById("Options");
+//     
+
+//     qQuestion.innerText = data.question;
+//     console.log(qQuestion);
+  
+
+// };
+
+
+function showDetails(data){
  
     qQuestion.innerText = data.question;
-    qOptions.innerText = 
-    console.log(qOptions);  
+ 
+    console.log(qQuestion);  
 };
+
+
 
 // options selection
 // function selectOption(){
