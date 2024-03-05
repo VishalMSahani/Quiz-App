@@ -27,7 +27,7 @@
 }
 
 #quizpage{
-    /* display: none; */
+    display: none;
     width: calc(100% - 20px);
     height: auto;
 }
@@ -35,7 +35,7 @@
     display: block;
 }
 
-#Quizbutton li{
+#Quizbutton {
     border: 2px solid;
     padding: 4px;
     border-radius: 8px;
@@ -43,10 +43,10 @@
     color: white;
     text-align: start;  
 }
-#Quizbutton li span{
+#Quizbutton span{
     margin-left:  10px;
 }
-#Quizbutton:hover{
+#quizOptions:hover{
     background-color:#2F195F;
     transition: all;
     transition-duration: 200ms;

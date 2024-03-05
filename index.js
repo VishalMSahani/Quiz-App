@@ -2,9 +2,7 @@ const quizStartButton = document.querySelector("#startButton");
 const firstPage = document.querySelector("#firstPage");
 const quizPage = document.querySelector("#quizpage");
 const qQuestion = document.querySelector("#quizQuestion");
-
-
-
+const qOptions = document.querySelectorAll("#quizOptions");
 
 let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 10;
 
@@ -20,57 +18,64 @@ quizStartButton.addEventListener('click',showQuiz);
 
 // API call 
 async function  getData() {
+    quizPage.classList.remove("active");
     const response = await fetch("https://opentdb.com/api.php?amount=10&category=22&difficulty=easy&type=multiple");
     let data = await response.json();
+    quizPage.classList.add("active");
     console.log(data);
-    (data.results[0]);
+    showDetails(data.results[0]);
 
 }
 
-// Function to shuffle an array using Fisher-Yates algorithm
-// function shuffleArray(array) {
-//     for (var i = array.length - 1; i > 0; i--) {
-//         var j = Math.floor(Math.random() * (i + 1));
-//         var temp = array[i];
-//         array[i] = array[j];
-//         array[j] = temp;
-//     }
-//     return array;
-// }
-
-// function showDetails(data){
-//     // const quizDiv = document.getElementById("Options");
-//     
-
-//     qQuestion.innerText = data.question;
-//     console.log(qQuestion);
-  
-
-// };
-
-
 function showDetails(data){
- 
-    qQuestion.innerText = data.question;
- 
-    console.log(qQuestion);  
+     qQuestion.innerText = data.question;
+
+    correctAnswer = data.correct_answer;
+    let incorrectAnswer = data.incorrect_answers;
+    let optionsList = incorrectAnswer;
+    optionsList.splice(Math.floor(Math.random() * (incorrectAnswer.length + 1)), 0, correctAnswer);
+    console.log(correctAnswer);
+    console.log(optionsList);
+
+    const optionA = document.querySelector(".quizOptionsA");
+    const optionB = document.querySelector(".quizOptionsB");
+    const optionC = document.querySelector(".quizOptionsC");
+    const optionD = document.querySelector(".quizOptionsD");
+
+    // qOptions.innerText = `${optionsList.map((option, index) =>`<li> ${index + 1}. <span>${option}</span> </li>`).join('')}`;
+    optionA.innerHTML= optionsList[0];
+    optionB.innerHTML= optionsList[1];
+    optionC.innerHTML= optionsList[2];
+    optionD.innerHTML= optionsList[3];
+    
 };
 
+     
+    //  qOptions.forEach((option) => option.innerHTML=" ");
+    //  data.incorrect_answers.forEach((item , index )=>{
+    //      let btn = createBtn(item,"wrong","btn-danger");
+    //      btn.setAttribute("index",index+1);
+    //      btn.addEventListener("click" , checkAnswer);
+    //      qOptions[3 - (index + 1)].appendChild(btn);    
+         
+    //  });
+    //  correctAnswer= data.correct_answer;
+    //  askedCount++;
+    //  if(askedCount === totalQuestion){
+    //     resultScreen();
+    //  }else{
+    //    setTime();
+    //  }
+     
+    //  var optionsList = document.createElement("ul");
+    //  qOptions.forEach(function(option) {
+    //      var optionItem = document.createElement("li");
+    //      optionItem.textContent = option;
+    //      optionsList.appendChild(optionItem);
+    //  });
 
 
-// options selection
-// function selectOption(){
-//     qOptions.querySelectorAll('li').forEach(function(option){
-//         option.addEventListener('click', function(){
-//             if(qOptions.querySelector('.selected')){
-//                 const activeOption = qOptions.querySelector('.selected');
-//                 activeOption.classList.remove('selected');
-//             }
-//             option.classList.add('selected');
-//         });
-//     });
-// }
+   
 
-// results[0].question
 
 quizStartButton.addEventListener('click',getData);
