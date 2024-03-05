@@ -41,12 +41,21 @@ var jsonData = `{
 // Parse JSON
 var data = JSON.parse(jsonData);
 
+// Function to shuffle an array using Fisher-Yates algorithm
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
+
 // Function to map options
 function mapOptions(question) {
     var options = question.incorrect_answers.concat(question.correct_answer);
-    // Shuffle options if needed
-    // options.sort(() => Math.random() - 0.5);
-    return options;
+    return shuffleArray(options);
 }
 
 // Render questions with options
